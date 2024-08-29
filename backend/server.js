@@ -20,10 +20,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/users", userRoutes);
 
-// app.get('/', (req, res) => {
-//     // root route http://localhost:5000
-//     res.send("Welcome to my API!")
-// });
+app.get('/', (req, res) => {
+    // root route http://localhost:5000
+    res.send("Welcome to my API!")
+});
 
 
 app.listen(PORT, () =>{
