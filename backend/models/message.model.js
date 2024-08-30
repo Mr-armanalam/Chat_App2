@@ -18,7 +18,7 @@ const MessageSchema = new Schema(
       required: true,
     },
   },
-  { timestampst: true } //createdAt , updatedAt => content.createdAt
+  { timestamps: true } //createdAt , updatedAt => content.createdAt
 );
 
 export default mongoose.model('Message', MessageSchema);
