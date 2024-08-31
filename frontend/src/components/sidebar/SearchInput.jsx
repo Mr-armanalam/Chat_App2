@@ -4,11 +4,13 @@ import useConversation from "../../zustand/useConversation";
 
 import useGetConversations from "../../hooks/useGetConversations";
 import toast from "react-hot-toast";
+import { useClickContext } from "../../context/clickContext";
 
 const SearchInput = () => {
   const [search, setSearch] = useState("")
   const {setSelectedConversation} = useConversation();
   const {conversations} = useGetConversations();
+  const {setClicked} = useClickContext();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,7 +23,8 @@ const SearchInput = () => {
 
     if(conversation) {
       setSelectedConversation(conversation);
-      setSearch("")
+      setSearch("");
+      setClicked(true);
     }else {
       toast.error("No such user found !");
     }
