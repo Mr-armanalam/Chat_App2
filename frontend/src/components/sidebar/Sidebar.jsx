@@ -2,10 +2,18 @@ import React from 'react'
 import SearchInput from './SearchInput'
 import Conversations from './Conversations';
 import LogoutButton from './LogoutButton';
+import { useClickContext } from '../../context/clickContext';
 
 const Sidebar = () => {
+  const {clicked} = useClickContext();
+ // console.log(clicked);
+  
   return (
-    <div className='border-r border-slate-500 p-4 flex flex-col'>
+    <div
+      className={`border-r block border-slate-500 p-4 sm:flex sm:flex-col ${
+        clicked ? "max-[425px]:hidden" : ""
+      }`}
+    >
       <SearchInput />
       <div className="divider px-3"></div>
       <Conversations />

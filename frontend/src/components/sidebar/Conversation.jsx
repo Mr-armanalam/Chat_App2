@@ -2,6 +2,7 @@ import React from 'react';
 import { RxAvatar } from "react-icons/rx";
 import useConversation from '../../zustand/useConversation';
 import { useSocketContext } from '../../context/socketContext';
+import { useClickContext } from '../../context/clickContext';
 
 const Conversation = ({conversation, lastIdx, emoji}) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -11,6 +12,12 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
   const isOnline = onlineUser.includes(conversation._id)
   //  console.log(onlineUser);
   //  console.log(conversation._id);
+  const {setClicked} = useClickContext();
+
+  const handleconversation = () => {
+    setSelectedConversation(conversation);
+    setClicked(true);
+  }
   
   
   return (
@@ -19,7 +26,8 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
         className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer ${
           isSelected ? "bg-sky-500" : ""
         }`}
-        onClick={() => setSelectedConversation(conversation)}
+        // onClick={() => setSelectedConversation(conversation)}
+        onClick={handleconversation}
       >
         <div className={`avatar ${isOnline ? "online" :""}`}>
           <div className="w-12 rounded-full">
